@@ -1,16 +1,12 @@
-
-langchain-community
-langchain-core
-langchain-groq
-langchain-openai
-langchain-text-splitters
-pandas
-numpy
-python-dotenv
-streamlit_pdf_viewer
-chromadb==0.3.21  # Compatible version that avoids SQLite issues
-pydantic==1.10.8  # Align with langchain dependencies
+streamlit==1.25.0  # Adjust to the latest compatible version
 langchain>=0.0.304
-streamlit>=1.18.0
+langchain-core>=0.3.28
+langchain-openai>=0.2.14
+chromadb>=0.6.0
+pydantic==1.10.12
 openai>=0.27.0
-pypdf>=5.0.0
+pandas>=2.2.3
+numpy>=2.2.1
+python-dotenv>=1.0.1
+pypdf>=5.1.0
+streamlit-pdf-viewer>=0.0.19
