@@ -54,6 +54,30 @@ def get_embedding_function(api_key):
     )
 
 
+# def create_vectorstore(chunks, embedding_function, file_name):
+#     """Creates a Chroma vectorstore explicitly in in-memory mode."""
+#     ids = [str(uuid.uuid5(uuid.NAMESPACE_DNS, doc.page_content)) for doc in chunks]
+#     unique_ids = set()
+#     unique_chunks = []
+
+#     for chunk, id in zip(chunks, ids):
+#         if id not in unique_ids:
+#             unique_ids.add(id)
+#             unique_chunks.append(chunk)
+
+#     # Explicitly set persist_directory=None to force in-memory mode
+#     vectorstore = Chroma.from_documents(
+#         documents=unique_chunks,
+#         collection_name=clean_filename(file_name),
+#         embedding=embedding_function,
+#         ids=list(unique_ids),
+#         client_settings=Settings(
+#             persist_directory=None,  # This avoids using SQLite entirely
+#             anonymized_telemetry=False  # Optional: Disable telemetry
+#         )
+#     )
+#     return vectorstore
+
 def create_vectorstore(chunks, embedding_function, file_name):
     """Creates a Chroma vectorstore explicitly in in-memory mode."""
     ids = [str(uuid.uuid5(uuid.NAMESPACE_DNS, doc.page_content)) for doc in chunks]
@@ -65,16 +89,17 @@ def create_vectorstore(chunks, embedding_function, file_name):
             unique_ids.add(id)
             unique_chunks.append(chunk)
 
-    # Explicitly set persist_directory=None to force in-memory mode
+    # Use in-memory mode by not specifying persist_directory
+    client_settings = Settings(
+        anonymized_telemetry=False  # Optional: Disable telemetry
+    )
+
     vectorstore = Chroma.from_documents(
         documents=unique_chunks,
         collection_name=clean_filename(file_name),
         embedding=embedding_function,
         ids=list(unique_ids),
-        client_settings=Settings(
-            persist_directory=None,  # This avoids using SQLite entirely
-            anonymized_telemetry=False  # Optional: Disable telemetry
-        )
+        client_settings=client_settings  # Pass settings without persist_directory
     )
     return vectorstore
 
