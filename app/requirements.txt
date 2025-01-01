@@ -5,11 +5,13 @@ langchain-groq
 langchain-openai
 langchain-text-splitters
 streamlit
-openai
+
 pandas
 numpy
 python-dotenv
 pypdf
+
+openai>=0.27.0
 
 streamlit_pdf_viewer
 chromadb>=0.4.6
