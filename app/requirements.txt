@@ -11,6 +11,7 @@ python-dotenv
 pypdf
 openai>=0.27.0
 streamlit_pdf_viewer
-chromadb>=0.6
+
 langchain>=0.0.304
 pysqlite3>=3.35.0
+chromadb>=0.4.6,<0.6 
