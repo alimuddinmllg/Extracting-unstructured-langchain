@@ -72,7 +72,8 @@ def create_vectorstore(chunks, embedding_function, file_name):
         embedding=embedding_function,
         ids=list(unique_ids),
         client_settings=Settings(
-            anonymized_telemetry=False,  # Disable telemetry if needed
+            persist_directory=None,  # This avoids using SQLite entirely
+            anonymized_telemetry=False  # Optional: Disable telemetry
         )
     )
     return vectorstore
