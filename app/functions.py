@@ -91,6 +91,7 @@ def create_vectorstore(chunks, embedding_function, file_name):
 
     # Use in-memory mode by not specifying persist_directory
     client_settings = Settings(
+        persist_directory=None,  # Ensures no SQLite is used
         anonymized_telemetry=False  # Optional: Disable telemetry
     )
 
