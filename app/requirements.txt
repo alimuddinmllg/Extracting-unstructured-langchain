@@ -4,14 +4,13 @@ langchain-core
 langchain-groq
 langchain-openai
 langchain-text-splitters
-streamlit
 pandas
 numpy
 python-dotenv
-pypdf
-openai>=0.27.0
 streamlit_pdf_viewer
-
+chromadb==0.3.21  # Compatible version that avoids SQLite issues
+pydantic==1.10.8  # Align with langchain dependencies
 langchain>=0.0.304
-
-chromadb>=0.4.6,<0.6 
+streamlit>=1.18.0
+openai>=0.27.0
+pypdf>=5.0.0
